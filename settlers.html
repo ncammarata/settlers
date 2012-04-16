@@ -3,13 +3,28 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> board}}
+  <canvas width=500 height=500></canvas>
 </body>
 
-<template name="hello">
-  <div class="hello">
-    <h1>Hello World!</h1>
-    {{greeting}}
-    <input type="button" value="Click" />
-  </div>
+<template name="board">
+  <h2>Players</h2>
+  <ul>
+    {{#each players}}{{> player}}{{/each}}
+  </ul>
+</template>
+
+<template name="player">
+  <li class="{{enabled_class}}">
+    {{name}}
+    {{#if is_turn}}
+      <button>Roll</button>
+    {{/if}}
+  </li>
+</template>
+
+<template name="sign_in">
+  <form>
+    handle: <input type="text"/><input type="submit" value="Start" />
+  </form>
 </template>
